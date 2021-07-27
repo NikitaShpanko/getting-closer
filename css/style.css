@@ -98,6 +98,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #02050c;
+  color: #02050c;
 
   font-family: "STIX Two Math", serif;
 }
@@ -134,4 +135,10 @@ a {
   transition-property: color;
   transition-timing-function: linear;
   transition-duration: 200ms;
+
+  color: rgb(20, 20, 230);
+}
+
+a:visited {
+  color: rgb(230, 20, 20);
 }

@@ -1,8 +1,5 @@
-/* background: url("../images/paper.jpg"); */
-// const imgUrl =
-//   "https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg";
 const IMG_URL = "../images/paper.jpg";
-const BG_DIM = { percLeft: 17, percRight: 17, percTop: 51, percTextSize: 10 };
+const BG_DIM = { percLeft: 17, percRight: 17, percTop: 52, percTextSize: 10 };
 
 const beforeLoad = Date.now();
 const background = document.querySelector("#background");
@@ -27,7 +24,7 @@ img.addEventListener("load", () => {
 function setTextDim() {
   const { width, height, x, y } = new BgActualSize();
   background.style.paddingLeft = `${(BG_DIM.percLeft / 100) * width + x}px`;
-  background.style.paddingRight = `${(BG_DIM.percRight / 100) * width - x}px`;
+  background.style.paddingRight = `${(BG_DIM.percRight / 100) * width + x}px`;
   background.style.paddingTop = `${(BG_DIM.percTop / 100) * height + y}px`;
   background.style.fontSize = `${(BG_DIM.percTextSize / 100) * height}px`;
 }
@@ -54,4 +51,4 @@ function BgActualSize() {
   this.y = (bgHeight - this.height) / 2;
 }
 
-function animateString() {}
+function animateStrings() {}

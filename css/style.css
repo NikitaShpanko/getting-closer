@@ -104,11 +104,14 @@ body {
   margin: 0;
   padding: 0;
   background-color: #02050c;
+
+  font-family: "STIX Two Math", serif;
 }
 
 p {
   margin: 0;
   text-align: center;
+  line-height: 1.15;
   /* background: red; */
 }
 

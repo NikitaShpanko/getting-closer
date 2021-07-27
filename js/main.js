@@ -8,7 +8,7 @@ img.src = IMG_URL;
 
 img.addEventListener("load", () => {
   console.log(Date.now() - beforeLoad);
-  background.style.backgroundImage = `url("${IMG_URL}")`;
+  background.style.backgroundImage = `url("${IMG_URL.slice(1)}")`;
   background.style.maxWidth = `${img.width}px`;
   background.style.maxHeight = `${img.height}px`;
   background.style.animationPlayState = "running";

@@ -1,4 +1,4 @@
-const IMG_URL = "../images/paper.jpg";
+const IMG_URL = "./images/paper.jpg";
 const BG_DIM = { percLeft: 17, percRight: 17, percTop: 52, percTextSize: 10 };
 
 const beforeLoad = Date.now();
@@ -8,7 +8,7 @@ img.src = IMG_URL;
 
 img.addEventListener("load", () => {
   console.log(Date.now() - beforeLoad);
-  background.style.backgroundImage = `url("${IMG_URL.slice(1)}")`;
+  background.style.backgroundImage = `url("${IMG_URL}")`;
   background.style.maxWidth = `${img.width}px`;
   background.style.maxHeight = `${img.height}px`;
   background.style.animationPlayState = "running";

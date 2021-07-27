@@ -1,5 +1,12 @@
 const IMG_URL = "./images/paper.jpg";
 const BG_DIM = { percLeft: 17, percRight: 17, percTop: 52, percTextSize: 10 };
+const TEXTS = [
+  { text: "Я – Дело.", delayBefore: 1500 },
+  { text: "Я приблизилось.", delayBefore: 1000 },
+  { text: "Давай посмотрим,", delayBefore: 500 },
+  { text: "что да как?", delayBefore: 500 },
+];
+const DELAY_LETTERS = 100;
 
 const beforeLoad = Date.now();
 const background = document.querySelector("#background");
@@ -13,6 +20,7 @@ img.addEventListener("load", () => {
   background.style.maxHeight = `${img.height}px`;
   background.style.animationPlayState = "running";
   setTextDim();
+  animateString(TEXTS, background, DELAY_LETTERS);
 
   if (window.ResizeObserver) {
     new ResizeObserver(setTextDim).observe(background);
@@ -51,4 +59,36 @@ function BgActualSize() {
   this.y = (bgHeight - this.height) / 2;
 }
 
-function animateStrings() {}
+function animateString(string, selector, delayLetters, index = 0) {
+  if (index >= string.length) return;
+
+  if (Array.isArray(string)) {
+    const { text, delayBefore } = string[index];
+    const p = document.createElement("p");
+    selector.append(p);
+    setTimeout(animateString, delayBefore, text, p, delayLetters);
+    setTimeout(
+      animateString,
+      delayBefore + delayLetters * text.length,
+      string,
+      selector,
+      delayLetters,
+      index + 1
+    );
+  } else if (typeof string === "string") {
+    if (string[index] === " ") selector.insertAdjacentHTML("beforeend", " ");
+    else {
+      const span = document.createElement("span");
+      span.innerText = string[index];
+      selector.append(span);
+    }
+    setTimeout(
+      animateString,
+      delayLetters,
+      string,
+      selector,
+      delayLetters,
+      index + 1
+    );
+  }
+}

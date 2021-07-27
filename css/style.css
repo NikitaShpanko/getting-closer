@@ -97,6 +97,7 @@ body {
   /* align-items: stretch; */
   /* justify-content: center; */
   position: absolute;
+  overflow: hidden;
   top: 0;
   bottom: 0;
   left: 0;
@@ -111,7 +112,7 @@ body {
 p {
   margin: 0;
   text-align: center;
-  line-height: 1.15;
+  line-height: 1.11;
   /* background: red; */
 }
 
@@ -130,7 +131,15 @@ p {
   background-size: contain;
   background-position: center;
   animation-name: backgr;
-  animation-duration: 5s;
+  animation-duration: 7s;
   animation-timing-function: linear;
   animation-play-state: paused;
+}
+
+span {
+  display: inline-block;
+  animation-name: backgr;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-play-state: running;
 }

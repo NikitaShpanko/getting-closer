@@ -7,7 +7,8 @@ const TEXTS = [
     aftermath: (selector) => {
       selector.innerHTML = `<a href="">${selector.innerText}</a>`;
     },
-    delayAftermath: 1500,
+    delayAftermath: 2000,
+    attributes: { style: "margin-left: 27.2589129164231%;" },
   },
   {
     delayBefore: 1000,
@@ -15,6 +16,7 @@ const TEXTS = [
     aftermath: (selector) => {
       selector.innerHTML = selector.innerText;
     },
+    attributes: { style: "margin-left: 7.41963763880772%;" },
   },
   {
     delayBefore: 500,
@@ -22,6 +24,7 @@ const TEXTS = [
     aftermath: (selector) => {
       selector.innerHTML = selector.innerText;
     },
+    attributes: { style: "margin-left: 3.55347749853887%;" },
   },
   {
     delayBefore: 500,
@@ -29,7 +32,8 @@ const TEXTS = [
     aftermath: (selector) => {
       selector.innerHTML = `<a href="https://t.me/szysztof">${selector.innerText}</a>`;
     },
-    delayAftermath: 500,
+    delayAftermath: 1500,
+    attributes: { style: "margin-left: 22.4050263004091%;" },
   },
 ];
 const DELAY_LETTERS = 100;
@@ -103,8 +107,12 @@ function animateString(string, selector, delayLetters, index = 0) {
   }
 
   if (Array.isArray(string)) {
-    const { text, delayBefore } = string[index];
+    const { text, delayBefore, attributes } = string[index];
     const p = document.createElement("p");
+    if (attributes)
+      Object.entries(attributes).forEach(([key, value]) => {
+        p.setAttribute(key, value);
+      });
     selector.append(p);
     string[index].selector = p;
     setTimeout(animateString, delayBefore, text, p, delayLetters);

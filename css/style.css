@@ -143,3 +143,10 @@ span {
   animation-timing-function: linear;
   animation-play-state: running;
 }
+
+a {
+  text-decoration: none;
+  transition-property: color;
+  transition-timing-function: linear;
+  transition-duration: 200ms;
+}

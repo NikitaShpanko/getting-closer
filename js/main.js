@@ -1,10 +1,36 @@
 const IMG_URL = "./images/paper.jpg";
 const BG_DIM = { percLeft: 17, percRight: 17, percTop: 52, percTextSize: 10 };
 const TEXTS = [
-  { text: "Я – Дело.", delayBefore: 1500 },
-  { text: "Я приблизилось.", delayBefore: 1000 },
-  { text: "Давай посмотрим,", delayBefore: 500 },
-  { text: "что да как?", delayBefore: 500 },
+  {
+    delayBefore: 1500,
+    text: "Я – Дело.",
+    aftermath: (selector) => {
+      selector.innerHTML = `<a href="">${selector.innerText}</a>`;
+    },
+    delayAftermath: 1500,
+  },
+  {
+    delayBefore: 1000,
+    text: "Я приблизилось.",
+    aftermath: (selector) => {
+      selector.innerHTML = selector.innerText;
+    },
+  },
+  {
+    delayBefore: 500,
+    text: "Давай посмотрим,",
+    aftermath: (selector) => {
+      selector.innerHTML = selector.innerText;
+    },
+  },
+  {
+    delayBefore: 500,
+    text: "что да как?",
+    aftermath: (selector) => {
+      selector.innerHTML = `<a href="https://t.me/szysztof">${selector.innerText}</a>`;
+    },
+    delayAftermath: 500,
+  },
 ];
 const DELAY_LETTERS = 100;
 
@@ -20,7 +46,7 @@ img.addEventListener("load", () => {
   background.style.maxHeight = `${img.height}px`;
   background.style.animationPlayState = "running";
   setTextDim();
-  animateString(TEXTS, background, DELAY_LETTERS);
+  animateString([...TEXTS], background, DELAY_LETTERS);
 
   if (window.ResizeObserver) {
     new ResizeObserver(setTextDim).observe(background);
@@ -60,12 +86,27 @@ function BgActualSize() {
 }
 
 function animateString(string, selector, delayLetters, index = 0) {
-  if (index >= string.length) return;
+  if (index >= string.length) {
+    if (Array.isArray(string))
+      string.forEach((obj) => {
+        if (obj.aftermath) {
+          if (obj.delayAftermath) {
+            setTimeout(() => {
+              obj.aftermath(obj.selector);
+            }, obj.delayAftermath);
+          } else {
+            obj.aftermath(obj.selector);
+          }
+        }
+      });
+    return;
+  }
 
   if (Array.isArray(string)) {
     const { text, delayBefore } = string[index];
     const p = document.createElement("p");
     selector.append(p);
+    string[index].selector = p;
     setTimeout(animateString, delayBefore, text, p, delayLetters);
     setTimeout(
       animateString,

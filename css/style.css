@@ -1,0 +1,133 @@
+@keyframes backgr {
+  0% {
+    transform: scale(0);
+  }
+
+  5% {
+    transform: scale(0.315727230125775);
+  }
+
+  10% {
+    transform: scale(0.602810274989087);
+  }
+
+  15% {
+    transform: scale(0.836597012474324);
+  }
+
+  20% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.08630716799229);
+  }
+
+  30% {
+    transform: scale(1.10100253895674);
+  }
+
+  35% {
+    transform: scale(1.06236369318321);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(0.948664774174905);
+  }
+
+  50% {
+    transform: scale(0.934171314870288);
+  }
+
+  55% {
+    transform: scale(0.958203038070499);
+  }
+
+  60% {
+    transform: scale(0.999999999999999);
+  }
+
+  65% {
+    transform: scale(1.0340479201869);
+  }
+
+  70% {
+    transform: scale(1.04448345212684);
+  }
+
+  75% {
+    transform: scale(1.02957325516148);
+  }
+
+  80% {
+    transform: scale(1);
+  }
+
+  85% {
+    transform: scale(0.973159913219118);
+  }
+
+  90% {
+    transform: scale(0.963983645990395);
+  }
+
+  95% {
+    transform: scale(0.976019943817017);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  /* position: absolute; */
+  /* display: flex; */
+  /* height: 100%; */
+  /* flex-direction: column; */
+  /* flex-basis: content; */
+  /* align-items: stretch; */
+  /* justify-content: center; */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  background-color: #02050c;
+}
+
+p {
+  margin: 0;
+  text-align: center;
+  /* background: red; */
+}
+
+#background {
+  /* position: relative;
+  top: 0;
+  bottom: 0; */
+  margin: auto auto;
+  width: 100%;
+  height: 100%;
+
+  /* padding-left: 30%;
+  padding-top: 30%; */
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  animation-name: backgr;
+  animation-duration: 5s;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+}

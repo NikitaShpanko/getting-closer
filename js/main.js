@@ -32,7 +32,7 @@ const TEXTS = [
     aftermath: (selector) => {
       selector.innerHTML = `<a href="https://t.me/szysztof">${selector.innerText}</a>`;
     },
-    delayAftermath: 1500,
+    delayAftermath: 1200,
     attributes: { style: "margin-left: 22.4050263004091%;" },
   },
 ];
